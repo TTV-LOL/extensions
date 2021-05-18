@@ -3,8 +3,19 @@ function onPlaylistBeforeRequest(details) {
   // (hls\/|vod\/)(.+?)$
   const match = /(hls|vod)\/(.+?)$/gim.exec(details.url);
 
+
   if (match !== null && match.length > 1) {
-    var playlistType = match[1] == "vod" ? "vod" : "playlist";
+
+    /* Break down the matches */
+    const firstMatch = match[1]
+    let secondMatch = match[2]
+
+    /* Look for the search term, user_id which passes private information */
+    const searchTerm = "user_id"
+    /* Rewrite the secondMatch with everything previous to the private information */
+    secondMatch = secondMatch.substring(0, secondMatch.indexOf(searchTerm))
+
+    var playlistType = firstMatch == "vod" ? "vod" : "playlist";
 
     var req = new XMLHttpRequest();
     req.open("GET", `https://api.ttv.lol/ping`, false);
@@ -17,7 +28,7 @@ function onPlaylistBeforeRequest(details) {
       };
     } else {
       return {
-        redirectUrl: `https://api.ttv.lol/${playlistType}/${encodeURIComponent(match[2])}`,
+        redirectUrl: `https://api.ttv.lol/${playlistType}/${encodeURIComponent(secondMatch)}`,
       };
     }
 
