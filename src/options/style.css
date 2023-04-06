@@ -1,0 +1,168 @@
+@font-face {
+  src: url("../fonts/Inter-VariableFont_slnt\,wght.ttf");
+  font-family: "Inter";
+}
+
+:root {
+  --font-primary: "Inter", "Roobert", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+
+  --brand-color: #9147ff;
+  --ui-background-color: #151619;
+
+  --text-primary: #c9cbcd;
+  --text-secondary: #8d9296;
+
+  --input-background-color: #1d1f23;
+  --input-background-color-disabled: #2e3138;
+  --input-border-color: #353840;
+  --input-text-primary: #c3c4ca;
+  --input-text-secondary: #7a8085;
+
+  --button-background-color: #353840;
+  --button-background-color-hover: #464953;
+  --button-text-primary: #c3c4ca;
+
+  --link: #9d5cff;
+  --link-hover: #af7aff;
+
+  --header-height: 2.5rem;
+}
+
+body {
+  margin: 1.5rem;
+  background-color: var(--ui-background-color);
+  color: var(--text-primary);
+  accent-color: var(--brand-color);
+  font-size: 100%;
+  font-family: var(--font-primary);
+}
+
+::-moz-selection,
+::selection {
+  background-color: var(--brand-color);
+  color: #ffffff;
+}
+
+a,
+a:visited {
+  color: var(--link);
+  transition: color 100ms ease-in-out;
+}
+
+a:hover,
+a:visited:hover {
+  color: var(--link-hover);
+}
+
+input[type="text"],
+select {
+  height: 30px;
+  padding: 0 0.65rem;
+  border: 1px solid var(--input-border-color);
+  border-radius: 6px;
+  background-color: var(--input-background-color);
+  color: var(--input-text-primary);
+  vertical-align: middle;
+}
+
+input[type="text"]:disabled {
+  background-color: var(--input-background-color-disabled);
+  color: var(--input-text-secondary);
+}
+
+input[type="text"]::placeholder {
+  font-style: italic;
+}
+
+input[type="button"],
+button {
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 6px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-primary);
+  cursor: pointer;
+  transition: background-color 100ms ease-in-out;
+}
+
+input[type="button"]:hover,
+button:hover {
+  background-color: var(--button-background-color-hover);
+}
+
+input[type="checkbox"]:disabled + label {
+  opacity: 0.7;
+}
+
+hr {
+  margin: 2.5rem 0;
+  border: 0;
+  border-top: 1px solid var(--input-border-color);
+}
+
+header {
+  height: var(--header-height);
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  height: var(--header-height);
+}
+
+.logo > img {
+  max-height: 100%;
+}
+
+.section {
+  margin-top: 1.5rem;
+}
+
+.section > h2 {
+  margin-bottom: 0.25rem;
+  font-size: 1.15rem;
+}
+
+.tag {
+  margin-left: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background-color: var(--input-border-color);
+  color: var(--input-text-primary);
+  font-weight: 600;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+}
+
+small {
+  color: var(--text-secondary);
+  font-size: 9pt;
+}
+
+.store-list > li > input {
+  min-width: 400px;
+  margin-bottom: 0.25rem;
+}
+
+li.hide-marker::marker {
+  display: none;
+  content: "";
+}
+
+.options-list {
+  list-style-type: none;
+}
+
+.options-list > li {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.options-list > li > input[type="checkbox"] {
+  position: absolute;
+  left: -1.6rem;
+  margin-top: 0.3rem;
+}

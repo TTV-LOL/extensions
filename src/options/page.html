@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Options - TTV LOL PRO</title>
+    <link rel="icon" href="../images/brand/favicon.ico" />
+    <link rel="stylesheet" href="../common/css/boilerplate.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="../images/brand/icon.png" alt="Icon of TTV LOL" />
+        <img src="../images/brand/logo.png" alt="TTV LOL" />
+      </div>
+    </header>
+    <main>
+      <h1>Options</h1>
+
+      <section id="general-section" class="section">
+        <h2>General</h2>
+        <ul class="options-list">
+          <li>
+            <input
+              type="checkbox"
+              name="reset-player-on-midroll-checkbox"
+              id="reset-player-on-midroll-checkbox"
+            />
+            <label for="reset-player-on-midroll-checkbox">
+              Reset the player when a midroll ad is detected
+            </label>
+            <br />
+            <small>
+              Player resets may show a momentary black screen. This feature is
+              only available on Twitch's desktop website.
+            </small>
+          </li>
+          <li>
+            <input
+              type="checkbox"
+              name="check-for-updates-checkbox"
+              id="check-for-updates-checkbox"
+            />
+            <label for="check-for-updates-checkbox">
+              Show a banner in the extension's popup when a new version is
+              available
+            </label>
+            <br />
+            <small>
+              This option is handy for users who have used the ZIP file
+              installation method.
+            </small>
+          </li>
+        </ul>
+      </section>
+
+      <section id="whitelisted-channels-section" class="section">
+        <h2>Whitelisted channels</h2>
+        <ul id="whitelisted-channels-list" class="store-list"></ul>
+      </section>
+
+      <section id="servers-section" class="section">
+        <h2>Proxies</h2>
+        <small>
+          TTV LOL PRO will ping each server in the list below until one
+          successfully responds to a <code>GET /ping</code> request.
+        </small>
+        <br />
+        <small>
+          Servers listed below must be compatible with TTV LOL's API structure
+          (<code>/ping</code>, <code>/playlist</code>, and
+          <code>/vod</code> routes). Failure to follow this structure will cause
+          TTV LOL PRO to error out.
+        </small>
+        <br />
+        <ol id="servers-list" class="store-list" start="0"></ol>
+        <small>
+          Looking for compatible proxies? Check out the "<a
+            href="https://github.com/younesaassila/ttv-lol-pro/discussions/37"
+            target="_blank"
+            >List of other proxies</a
+          >" discussion on TTV LOL PRO's GitHub repository.
+        </small>
+        <br />
+        <small>
+          Note: Fallback to stream with ads on server error is only available
+          for TTV LOL's API (https://api.ttv.lol).
+        </small>
+        <br />
+      </section>
+
+      <section id="privacy-section" class="section">
+        <h2>Privacy</h2>
+        <ul class="options-list">
+          <li>
+            <input
+              type="checkbox"
+              name="disable-vod-redirect-checkbox"
+              id="disable-vod-redirect-checkbox"
+            />
+            <label for="disable-vod-redirect-checkbox">
+              Disable VOD proxying
+            </label>
+            <br />
+            <small>
+              TTV LOL's API requires your Twitch token (containing sensitive
+              information) to remove ads from VODs. To protect your privacy, and
+              since most ad blockers (like uBlock Origin) already remove ads
+              from VODs, this option is enabled by default.
+            </small>
+          </li>
+        </ul>
+      </section>
+
+      <section id="ignored-channel-subscriptions-section" class="section">
+        <h2>Ignored channel subscriptions</h2>
+        <small>
+          TTV LOL PRO will not check if you are subscribed to the following
+          channels. This option is useful if you are subscribed to a channel
+          that shows ads to subscribers.
+        </small>
+        <ul id="ignored-channel-subscriptions-list" class="store-list"></ul>
+      </section>
+
+      <hr />
+
+      <section class="section">
+        <button id="export-button">Back up to file…</button>
+        <button id="import-button">Restore from file…</button>
+        <button id="reset-button">Reset to default settings…</button>
+      </section>
+    </main>
+
+    <script type="module" src="./options.ts"></script>
+  </body>
+</html>

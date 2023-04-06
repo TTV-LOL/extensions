@@ -1,0 +1,246 @@
+@font-face {
+  src: url("../fonts/Inter-VariableFont_slnt\,wght.ttf");
+  font-family: "Inter";
+}
+
+:root {
+  --popup-width: 310px;
+  --font-family: "Inter", "Roobert", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+
+  --background: #151619;
+  --background-secondary: #202127;
+  --background-tertiary: #292b32;
+
+  --border-radius: 8px;
+  --text-color: #c9cbcd;
+  --success-color: #43b581;
+  --error-color: #f04747;
+  --whitelisted-color: #baaadb;
+}
+
+body {
+  width: var(--popup-width);
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 20px;
+  gap: 15px;
+}
+
+main > * {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+}
+
+/* Update banner */
+
+#update-banner {
+  display: none;
+  margin: 3px 3px 0 3px;
+  padding: 15px;
+  border: 1px solid #7d5eba;
+  border-radius: 5px;
+  background-color: #7d5eba4d;
+  color: #ffffff;
+  font-size: 9pt;
+}
+
+#update-banner .update-banner-link,
+#update-banner .update-banner-link:visited {
+  color: currentColor;
+  transition: opacity 100ms ease-in-out;
+}
+
+#update-banner .update-banner-link:hover,
+#update-banner .update-banner-link:hover:visited {
+  color: currentColor;
+  opacity: 0.8;
+}
+
+/* Logo */
+
+.logo-wrapper {
+  background-color: var(--background-secondary);
+  text-align: center;
+}
+
+.logo-wrapper > img {
+  width: 60%;
+}
+
+/* Stream status */
+
+#stream-status {
+  display: none;
+  flex-direction: column;
+  background-color: var(--background-secondary);
+}
+/* Proxy status */
+#stream-status #proxy-status {
+  display: grid;
+  grid-template-rows: min-content min-content min-content;
+  grid-template-columns: min-content auto;
+  grid-template-areas:
+    "top-left top-right"
+    "middle-left middle-right"
+    "bottom-left bottom-right";
+  padding: 15px;
+}
+/* Proxy status icon */
+#stream-status #redirected {
+  display: flex;
+  grid-area: top-left;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+#stream-status #redirected.success {
+  color: var(--success-color);
+}
+#stream-status #redirected.error {
+  color: var(--error-color);
+}
+/* Proxy status stream ID */
+#stream-status #stream-id {
+  grid-area: top-right;
+  margin: 0;
+  font-size: 11pt;
+}
+/* Proxy status reason */
+#stream-status #reason {
+  grid-area: middle-right;
+  margin: 2px 0 0 0;
+  font-size: 9pt;
+  opacity: 0.8;
+}
+/* Proxy status country */
+#stream-status #proxy-country {
+  grid-area: bottom-right;
+  margin: 10px 0 0 0;
+  font-size: 7pt;
+  opacity: 0.6;
+}
+/* Whitelist status */
+#whitelist-status {
+  height: 40px;
+  border-top: 1px solid #3d4042;
+  background-color: var(--background-secondary);
+  text-align: center;
+  transition: background-color 100ms ease-in-out;
+}
+#whitelist-status:hover {
+  background-color: var(--background-tertiary);
+}
+/* Whitelist toggle */
+#whitelist-toggle {
+  display: none;
+}
+/* Whitelist toggle icon */
+#whitelist-status #whitelist-toggle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 3px;
+}
+#whitelist-status[data-whitelisted="false"] #whitelist-toggle-icon .bi-plus {
+  display: initial;
+}
+#whitelist-status[data-whitelisted="false"]
+  #whitelist-toggle-icon
+  .bi-check-lg {
+  display: none;
+}
+#whitelist-status[data-whitelisted="true"] #whitelist-toggle-icon .bi-plus {
+  display: none;
+}
+#whitelist-status[data-whitelisted="true"] #whitelist-toggle-icon .bi-check-lg {
+  display: initial;
+  color: var(--whitelisted-color);
+}
+/* Whitelist toggle label */
+#whitelist-status #whitelist-toggle-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  font-size: 11pt;
+  cursor: pointer;
+}
+#whitelist-status[data-whitelisted="false"] #whitelist-toggle-label::after {
+  content: "Whitelist";
+}
+#whitelist-status[data-whitelisted="true"] #whitelist-toggle-label::after {
+  content: "Whitelisted";
+  color: var(--whitelisted-color);
+}
+
+/* Links */
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li {
+  border-bottom: 1px solid #3d4042;
+}
+
+.list li:last-child {
+  border-bottom: none;
+}
+
+.list .list-item,
+.list .list-item:visited {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  padding: 10px 15px;
+  background-color: var(--background-secondary);
+  color: var(--text-color);
+  text-decoration: none;
+  transition: background-color 100ms ease-in-out;
+}
+
+.list .list-item:hover,
+.list .list-item:visited:hover {
+  background-color: var(--background-tertiary);
+}
+
+.list .list-item .list-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+}
+
+.list .list-item .list-item-title {
+  margin: 0 0 2px 0;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+.list .list-item .list-item-description {
+  margin: 0;
+  font-size: 8pt;
+  opacity: 0.8;
+}
